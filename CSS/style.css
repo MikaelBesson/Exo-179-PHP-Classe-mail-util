@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+}
+
+#container {
+    margin: auto;
+    width: 30%;
+    border: 2px solid blue;
+    padding: 10px 10px;
+    border-radius: 15%;
+
+}
+
+label {
+    font-size: 15px;
+
+}
+
+input {
+    text-align: center;
+    box-shadow: 2px 2px 2px 2px darkslategrey;
+}
+
+textarea {
+    margin: auto;
+}
+
+button {
+    border-color:green;
+    margin-top: 5px;
+    margin-left: 40%;
+    padding: 2px 2px;
+    border-radius: 20%;
+}
