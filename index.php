@@ -1,5 +1,5 @@
 <?php
-
+require './classes/Mail.php';
 
 ?>
 
@@ -13,15 +13,26 @@
     <title>index</title>
 </head>
 <body>
+<?php
+if(isset($_POST['nom']) && isset($_POST['mail']) && isset($_POST['subject']) && isset($_POST['message'])){
+    $name = trim(strip_tags($_POST['nom']));
+    $email = trim(strip_tags($_POST['mail']));
+    $subject = trim(strip_tags($_POST['subject']));
+    $message = trim(strip_tags($_POST['message']));
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $mailer = new Mail('m-b',$email,$subject,$message);
+        $mailer->sendMail();
+    }
+}
+
+?>
     <div id="container">
     <form action="index.php" method="post">
-        <label for="nom" id="userName">Nom</label>
+        <label for="nom" id="userName">Nom</label><br>
         <input type="text" name="nom" id="nom" placeholder="Votre nom ici"><br><br>
-        <label for="prenom" id="userPrenom">Prenom</label>
-        <input type="text" name="prenom" id="prenom" placeholder="Votre prenom ici"><br><br>
-        <label for="destinataire" id="mailTo">Destinataire</label>
+        <label for="destinataire" id="mailTo">Destinataire</label><br>
         <input type="email" name="mail" id="destinataire" placeholder="Exemple@mail.com"><br><br>
-        <label for="subject" id="subject">sujet</label>
+        <label for="subject" id="subject">sujet</label><br>
         <input type="text" name="subject" id="subject" placeholder="Votre sujet ici"><br>
         <label for="message" id="textArea">Votre message</label><br>
         <textarea type="text" name="message" id="message" placeholder="Votre message ici" cols="20%" rows="5"></textarea>
